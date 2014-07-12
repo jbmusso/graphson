@@ -1,0 +1,43 @@
+{
+  "name": "graphson",
+  "version": "0.0.0",
+  "description": "JavaScript GraphSON reader/writer",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gulthor/graphson"
+  },
+  "keywords": [
+    "tinkerpop",
+    "graphson",
+    "reader",
+    "writer",
+    "parsing",
+    "parser",
+    "serialize",
+    "deserialize",
+    "serializer",
+    "deserializer",
+    "graph",
+    "graph",
+    "db",
+    "graph",
+    "database"
+  ],
+  "author": "Jean-Baptiste Musso <jbmusso+github@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gulthor/graphson/issues"
+  },
+  "homepage": "https://github.com/gulthor/graphson",
+  "dependencies": {
+    "JSONStream": "^0.8.4",
+    "readable-stream": "^1.0.27-1"
+  }
+}
