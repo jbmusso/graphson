@@ -1,6 +1,6 @@
 {
   "name": "graphson",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "JavaScript GraphSON reader/writer",
   "main": "index.js",
   "directories": {
