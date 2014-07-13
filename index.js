@@ -1,17 +1,23 @@
-var ReadableStream = require('readable-stream');
 var JSONStream = require('JSONStream');
+var through = require('through');
 
-module.exports.parse = function(source) {
-  var elementStream = new ReadableStream();
 
-  source.pipe(JSONStream.parse('graph.*.*', function(k) {
-    elementStream.emit(k._type, k);
-    elementStream.emit('element', k);
-  }));
+module.exports.parse = function() {
+  return JSONStream.parse('graph.*.*');
+};
 
-  source.on('end', function() {
-    elementStream.emit('end');
+module.exports.vertices = function() {
+  return through(function(element) {
+    if (element._type === 'vertex') {
+      this.push(element);
+    }
   });
+};
 
-  return elementStream;
+module.exports.edges = function() {
+  return through(function(element) {
+    if (element._type === 'edge') {
+      this.push(element);
+    }
+  });
 };

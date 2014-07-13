@@ -2,32 +2,21 @@ var fs = require('fs');
 var GraphSON = require('../');
 
 
-console.time("parsetime");
+var elements = 0;
 
-var stream = fs.createReadStream(__dirname +'/tinkergraph-normal.json');
+console.time("Parsetime");
 
-var g = GraphSON.parse(stream);
-var vertices = 0;
-var edges = 0;
+var g = fs.createReadStream(__dirname +'/tinkergraph-normal.json')
+.pipe(GraphSON.parse())
+.pipe(GraphSON.vertices());
 
-
-g.on('vertex', function(vertex) {
-  console.log("Vertex:", vertex);
-  vertices++;
-});
-
-g.on('edge', function(edge) {
-  console.log("Edge:", edge);
-  edges++;
-});
-
-g.on('element', function(element) {
-  // console.log('Element:', element);
+g.on('data', function(element) {
+  console.log(element);
+  elements++;
 });
 
 g.on('end', function() {
-  console.timeEnd("parsetime");
+  console.timeEnd("Parsetime");
   console.log('Reached end of GraphSON file.');
-  console.log('- total vertices parsed:', vertices);
-  console.log('- total edges parsed', edges);
+  console.log('- Total graph elements parsed:', elements);
 });

@@ -38,6 +38,6 @@
   "homepage": "https://github.com/gulthor/graphson",
   "dependencies": {
     "JSONStream": "^0.8.4",
-    "readable-stream": "^1.0.27-1"
+    "through": "^2.3.4"
   }
 }
